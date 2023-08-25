@@ -1,0 +1,45 @@
+.cartItems {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cartTotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding: 1rem;
+}
+
+.cartActions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.cartActions button {
+    background-color: transparent;
+    border: 1px solid #8a2b06;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    margin-left: 1rem;
+}
+
+.cartActions button:hover,
+.cartActions button:active {
+  background-color: #5a1a01;
+  border-color: #5a1a01;
+  color: white;
+}
+
+.cartActions .button--alt {
+  color: #8a2b06;
+}
+
+.cartActions .button {
+  background-color: #8a2b06;
+  color: white;
+}

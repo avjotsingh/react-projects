@@ -1,0 +1,13 @@
+.mealItemForm {
+    text-align: right;
+}
+
+.mealItemForm button {
+    width: 4rem;
+    background-color: #8a2b06;
+    border: 1px solid #8a2b06;
+    color: white;
+    border-radius: 1rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+}
