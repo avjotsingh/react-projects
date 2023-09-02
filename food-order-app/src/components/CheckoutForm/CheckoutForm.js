@@ -6,6 +6,8 @@ import useInput from "../../hooks/use-input";
 import CheckoutContext from "../../store/checkout-context";
 import { SCREENS } from "../../store/CheckoutProvider";
 
+const ORDERS_URL = 'https://react-meals-10cb7-default-rtdb.firebaseio.com/orders.json'
+
 const CheckoutForm = (props) => {
   const cartCtx = useContext(CartContext);
   const checkoutCtx = useContext(CheckoutContext);
@@ -54,7 +56,7 @@ const CheckoutForm = (props) => {
     changeHandler: pincodeChangeHandler,
     blurHandler: pincodeBlurHandler,
     reset: pincodeReset,
-  } = useInput(hasNDigits.bind(null, 5));
+  } = useInput(hasNDigits.bind(null, 6));
 
   const {
     value: mobile,
@@ -81,10 +83,24 @@ const CheckoutForm = (props) => {
     checkoutCtx.reset();
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     if (!formIsValid) return;
 
+    await fetch(ORDERS_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        userData: {
+          name,
+          adddress,
+          city,
+          pincode,
+          mobile
+        },
+        order: cartCtx.items
+      })
+    });
+    
     nameReset();
     addressReset();
     cityReset();
