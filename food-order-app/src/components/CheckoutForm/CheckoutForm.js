@@ -184,10 +184,9 @@ const CheckoutForm = (props) => {
             )}
           </div>
         </div>
-        <div className={classes.actions}>
+        <div className={classes.cartActions}>
           <button
-            className={`${classes.button} ${classes["button--alt"]}`}
-            type="button"
+            className={classes["button--alt"]}
             onClick={backClickHandler}
           >
             Back

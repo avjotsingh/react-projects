@@ -3,7 +3,9 @@ import Modal from "../UI/Modal";
 import CartContext from "../../store/cart-context";
 import classes from './ThankYou.module.css'
 import CheckoutContext from "../../store/checkout-context";
-import { SCREENS } from "../../store/CheckoutProvider";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
+
 
 const ThankYou = props => {
 
@@ -18,10 +20,10 @@ const ThankYou = props => {
 
     return <Modal onClose={closeHandler}>
         <div className={classes.thanks}>
-            <p>Thank you for placing an order with us!</p>
+            <p className={classes.small}>Thank you for placing an order with us!</p>
         </div>
-        <div className={classes.actions}>
-            <button type="button" className="button" onClick={closeHandler}>Close</button>
+        <div className={classes.cartActions}>
+            <button type="button" className={classes['button--alt']} onClick={closeHandler}>Close</button>
         </div>
     </Modal>
 }

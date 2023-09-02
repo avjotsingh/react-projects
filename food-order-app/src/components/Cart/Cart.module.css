@@ -45,7 +45,8 @@
 }
 
 .cartActions .button:disabled {
-  background-color: #ccc;
+  background-color: transparent;
   color: darkgray;
+  border-color: darkgray;
   cursor: not-allowed;
 }

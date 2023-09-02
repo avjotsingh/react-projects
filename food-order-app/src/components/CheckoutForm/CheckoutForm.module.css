@@ -32,35 +32,6 @@
     margin: 0;
 }
 
-.actions {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.actions .button--alt {
-    color: #8a2b06;
-}
-
-.actions button {
-    background-color: transparent;
-    border: 1px solid #8a2b06;
-    padding: 0.5rem 2rem;
-    border-radius: 1rem;
-    margin-left: 1rem;
-}
-
-.actions .button {
-    background-color: #8a2b06;
-    color: white;
-}
-
-.actions .button:disabled {
-    border: 1px solid #8a2b06;
-    color: #8a2b06;
-    background-color: transparent;
-    cursor: not-allowed;
-}
-
 .errorText {
     color: red;
 }
@@ -68,4 +39,42 @@
 .invalid input {
     border: 1px solid red;
     background-color: rgb(255, 220, 220);
+}
+
+.cartActions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.cartActions button {
+    background-color: transparent;
+    border: 1px solid #8a2b06;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    margin-left: 1rem;
+}
+
+.cartActions button:hover,
+.cartActions button:active {
+  background-color: #5a1a01;
+  border-color: #5a1a01;
+  color: white;
+}
+
+.cartActions .button--alt {
+  color: #8a2b06;
+}
+
+.cartActions .button {
+  background-color: #8a2b06;
+  color: white;
+}
+
+.cartActions .button:disabled {
+  background-color: transparent;
+  color: darkgray;
+  border-color: darkgray;
+  cursor: not-allowed;
 }
