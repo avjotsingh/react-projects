@@ -11,7 +11,6 @@ const MealItem = (props) => {
 
   const ctx = useContext(CartContext);
   const addItemHandler = amount => {
-    console.log('amount', amount)
     ctx.addItem({
       id: props.id,
       name: props.name,

@@ -2,12 +2,25 @@ import CartContext from "./cart-context";
 import {useReducer} from 'react';
 
 const defaultCartState = {
+    cartIsVisible: false,
     items: [],
     totalAmount: 0,
 }
 
 const cartReducer = (state, action) => {
-    if (action.type === 'ADD') {
+    if (action.type === 'SHOW_CART') {
+        console.log('Show cart modal');
+        return {
+            ...state,
+            cartIsVisible: true
+        }
+    } else if (action.type === 'HIDE_CART') {
+        console.log('Hide cart modal');
+        return {
+            ...state,
+            cartIsVisible: false
+        }
+    } else if (action.type === 'ADD') {
         console.log('item to add ', action.item)
         const itemIndex = state.items.findIndex(item => item.id === action.item.id)
         console.log('item index', itemIndex)
@@ -22,6 +35,7 @@ const cartReducer = (state, action) => {
 
         const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
         return {
+            cartIsVisible: state.cartIsVisible,
             items: updatedItems,
             totalAmount: updatedTotalAmount
         }
@@ -37,6 +51,7 @@ const cartReducer = (state, action) => {
             const updatedTotalAmount = state.totalAmount - updatedItems[itemIndex].price
             updatedItems = updatedItems.filter(item => item.amount > 0)
             return {
+                cartIsVisible: state.cartIsVisible,
                 items: updatedItems,
                 totalAmount: updatedTotalAmount
             }
@@ -49,6 +64,18 @@ const cartReducer = (state, action) => {
 const CartProvider = props => {
 
     const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
+
+    const showCartHandler = () => {
+        dispatchCartAction({
+            type: 'SHOW_CART'
+        })
+    }
+
+    const hideCartHandler = () => {
+        dispatchCartAction({
+            type: 'HIDE_CART'
+        })
+    }
 
     const addItemToCartHandler = (item) => {
         dispatchCartAction({
@@ -64,10 +91,17 @@ const CartProvider = props => {
         })
     }
 
+    const resetCartHandler = () => {
+        dispatchCartAction({})
+    }
+
     const cartContext = {
         ...cartState,
+        showCart: showCartHandler,
+        hideCart: hideCartHandler,
         addItem: addItemToCartHandler,
-        removeItem: removeItemFromCartHandler
+        removeItem: removeItemFromCartHandler,
+        resetCart: resetCartHandler
     }
 
     return <CartContext.Provider value={cartContext}>
